@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Light ON/OFF</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #222;
+      transition: background-color 0.3s;
+      font-family: Arial, sans-serif;
+    }
+
+    .light-container {
+      text-align: center;
+    }
+
+    .light {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #555;
+      margin: 0 auto 20px auto;
+      box-shadow: 0 0 20px #000;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .on {
+      background-color: yellow;
+      box-shadow: 0 0 50px yellow;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="light-container">
+    <div class="light" id="light"></div>
+    <button id="toggleBtn">Turn ON</button>
+  </div>
+
+  <script>
+    const light = document.getElementById("light");
+    const toggleBtn = document.getElementById("toggleBtn");
+
+    let isOn = false;
+
+    toggleBtn.addEventListener("click", () => {
+      isOn = !isOn;
+      if(isOn) {
+        light.classList.add("on");
+        toggleBtn.textContent = "Turn OFF";
+        document.body.style.backgroundColor = "#fff";
+      } else {
+        light.classList.remove("on");
+        toggleBtn.textContent = "Turn ON";
+        document.body.style.backgroundColor = "#222";
+      }
+    });
+  </script>
+</body>
+</html>
